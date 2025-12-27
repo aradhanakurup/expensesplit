@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: expensesplit
+  labels:
+    name: expensesplit
+    environment: production
