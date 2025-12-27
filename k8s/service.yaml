@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: expensesplit-api-service
+  namespace: expensesplit
+spec:
+  type: LoadBalancer
+  selector:
+    app: expensesplit-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+    name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  namespace: expensesplit
+spec:
+  type: ClusterIP
+  selector:
+    app: postgres
+  ports:
+  - protocol: TCP
+    port: 5432
+    targetPort: 5432
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: expensesplit
+spec:
+  type: ClusterIP
+  selector:
+    app: redis
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379
